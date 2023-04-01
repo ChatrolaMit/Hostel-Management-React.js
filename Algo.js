@@ -933,9 +933,7 @@ function allocation(){
             tag = (tag+1)%2
             counter = 0
           } 
-        }
-        
-        
+        } 
 
       }
     }
@@ -1037,6 +1035,23 @@ for(let i = 0 ; i<4 ; i++){
   }
 }
 console.log(dir)
-for(let i=0 ; i<bran ; i++){
-    console.log(branches[i],": ",boys[i])
+// for(let i=0 ; i<bran ; i++){
+//     console.log(branches[i],": ",boys[i])
+// }
+
+for(br = 0 ; br<bran ; br++){
+  for( i = 0; i<4 ; i++){
+    
+    for(iter = 0 ;branches[br] in create_sorted_dataset &&  iter<create_sorted_dataset[branches[br]].length && dir[branches[br]][i]>0; iter++){
+      // console.log(create_sorted_dataset[branches[br]][iter])
+      if(create_sorted_dataset[branches[br]][iter]['Cast ']==category[i]){
+        dir[branches[br]][i]--;
+        create_sorted_dataset[branches[br]][iter]['Gender '] = "Allocated";
+        console.log(create_sorted_dataset[branches[br]][iter]['Name'] ,create_sorted_dataset[branches[br]][iter]['Gender '] , create_sorted_dataset[branches[br]][iter]['Cast '] , create_sorted_dataset[branches[br]][iter]['Branch '])
+
+      }
+    }
+  }
 }
+
+// console.log(create_sorted_dataset)
