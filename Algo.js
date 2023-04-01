@@ -829,8 +829,8 @@ function  print_data(){
   }
 }
 
-function sort_data(students){
-  students.sort((a,b)=>{
+function sort_data(stud){
+  stud.sort((a,b)=>{
     return a['ACPC Rank']-b['ACPC Rank'];
   })
 }
@@ -840,18 +840,7 @@ function allocated_from_branch(i){
   remaining[students[i]['branch']]--;
   seats--;
 }
-
-function pwd_allocation(students){
-  for(i = 0 ; i<students.length ; i++){
-    if(students[i]['pwd']==true && students[i]['allocationStatus']==false){
-      students[i][allocationStatus]=true;
-      seats--
-    }
-  } 
-  
-}
-
-let branches = ['Computer Engineering', 'Computer Science and Engineering','Information Technology', 'Electronics & Communication Engineering','Mechanical Engineering','Chemical Engineering','Electrical Engineering','civil','ic','ei', "pe"]
+let branches = ['Computer Engineering', 'Computer Science and Engineering','Information Technology', 'Electronics & Communication Engineering','Mechanical Engineering','Chemical Engineering','Electrical Engineering','Civil Enginnering','Instrumentation & Control Engineering','Electronics And Instrumentation Engineering', "Power Electronics Engineering"]
 let intake = [2,1,1,2,2,1,2,1,1,1,1]
 let boys = [0,0,0,0,0,0,0,0,0,0,0]
 
@@ -862,6 +851,48 @@ let bran = branches.length;
 let counter = 0;
 let seats = 77;
 let tag = 0;
+
+function pwd_allocation(students){
+  for(i = 0 ; i<students.length ; i++){
+    if(students[i]['pwd']==true && students[i]['allocationStatus']==false){
+      students[i][allocationStatus]=true;
+      seats--
+    }
+  }  
+}
+
+create_sorted_dataset = {}
+track_br = new Set();
+
+function dataset(students){
+  for(xx = 0 ; xx<students.length ; xx++ ){
+    inx = students[xx]
+    if(inx['personWithDisability' != 'false']) continue;
+    // console.log(inx['Branch '] , inx)
+    if(!(inx['Branch '] in create_sorted_dataset ) ){
+      create_sorted_dataset[inx['Branch ']]=[]
+    }
+    create_sorted_dataset[inx['Branch ']].push(inx)
+  }
+}
+dataset(students['Sheet1'])
+// console.log(create_sorted_dataset)
+
+function sort_new_dataset(){
+  for(br = 0 ; br<bran ; br++){
+    if(branches[br] in create_sorted_dataset )
+    sort_data(create_sorted_dataset[branches[br]])
+    // console.log(create_sorted_dataset[branches[br]].length)
+  }
+}
+sort_new_dataset()
+
+console.log(create_sorted_dataset)
+
+
+
+
+
 
 // PWD allocation
 pwd_allocation(students['Sheet1'])
@@ -906,8 +937,8 @@ for(let i = 0 ; i<bran ; i++){
   remaining[branches[i]] = boys[i];
 }
 
-// sort by acpc
-sort_data(students['Sheet1'])
+
+// sort_data(students['Sheet1'])
 
 
 
@@ -917,17 +948,12 @@ let sebc = Number(27*bran/100);
 let ews = Number(10*bran/100) ;
 others = bran-(sc_pr+sc_pr+sebc+ews)
 
-catagory = {'SC': sc_pr , 'ST' :st_pr , 'SEBC': sebc , 'EWS': ews, 'Open':others }
+catagory = {'SC': sc_pr , 'ST' :st_pr , 'SEBC': sebc , 'EWS': ews, 'Open':others };
 
-
-// for( i = 0 ; i<bran  ; i++){
-//     boys[i]=boys[i]-pwd[i];
-//     // remove that guy from catagory by selecting their cast and reduce it by one
-// }
+// sc allocation
 
 
 
-// SC allocation
 
 
 
