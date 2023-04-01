@@ -850,13 +850,14 @@ let bran = branches.length;
 
 let counter = 0;
 let seats = 77;
+rem = seats;
 let tag = 0;
 
 function pwd_allocation(students){
   for(i = 0 ; i<students.length ; i++){
     if(students[i]['pwd']==true && students[i]['allocationStatus']==false){
       students[i][allocationStatus]=true;
-      seats--
+      rem--;
     }
   }  
 }
@@ -888,6 +889,12 @@ function sort_new_dataset(){
 sort_new_dataset()
 
 console.log(create_sorted_dataset)
+
+function allocation(){
+  for(i = 0 ; i<n ; i++){
+
+  }
+}
 
 
 
@@ -953,15 +960,8 @@ catagory = {'SC': sc_pr , 'ST' :st_pr , 'SEBC': sebc , 'EWS': ews, 'Open':others
 // sc allocation
 
 
-
-
-
-
-
-
-
-
+console.log(seats)
 
 for(let i=0 ; i<bran ; i++){
-    console.log(boys[i])
+    console.log(branches[i],": ",boys[i])
 }
