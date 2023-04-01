@@ -11,6 +11,37 @@ students = {
       "Distance": 101
     },
     {
+      "Name": "alive arola ",
+      "Enrollment Number": 200170107151,
+      "ACPC Rank": 1720,
+      "Adhar Number": 242832365578,
+      "Gender ": "Male",
+      "Cast ": "General ",
+      "Branch ": "Civil Enginnering",
+      "Distance": 101
+    },
+    {
+      "Name": "akshay akola ",
+      "Enrollment Number": 200170107101,
+      "ACPC Rank": 1720,
+      "Adhar Number": 242832365578,
+      "Gender ": "Male",
+      "Cast ": "General ",
+      "Branch ": "Civil Enginnering",
+      "Distance": 101
+    }
+    ,
+    {
+      "Name": "jaydip narola ",
+      "Enrollment Number": 203170107101,
+      "ACPC Rank": 1720,
+      "Adhar Number": 242832365377,
+      "Gender ": "Male",
+      "Cast ": "General ",
+      "Branch ": "Civil Enginnering",
+      "Distance": 101
+    },
+    {
       "Name": "Dhrumil Ponkiya ",
       "Enrollment Number": 2001701071002,
       "ACPC Rank": 8000,
@@ -813,7 +844,7 @@ students = {
     
   ]
 }
-
+function Main(){
 function  print_data(){
   for (let i = 0; i < students.length; i++) {
     console.log(students[i]);
@@ -840,7 +871,7 @@ let boys = [0,0,0,0,0,0,0,0,0,0,0]
 let bran = branches.length;
 
 let counter = 0;
-let seats = 77;
+let seats = 76;
 rem = seats;
 let tag = 0;
 
@@ -1040,18 +1071,18 @@ for(br = 0 ; br<bran ; br++){
         dir[branches[br]][i]--;
         create_sorted_dataset[branches[br]][iter]['Gender '] = "Allocated";
         count++;
-        // console.log(create_sorted_dataset[branches[br]][iter]['Name'] ,create_sorted_dataset[branches[br]][iter]['Gender '] , create_sorted_dataset[branches[br]][iter]['Cast '] , create_sorted_dataset[branches[br]][iter]['Branch '])
+        console.log(create_sorted_dataset[branches[br]][iter]['Name'] ,create_sorted_dataset[branches[br]][iter]['Gender '] , create_sorted_dataset[branches[br]][iter]['Cast '] , create_sorted_dataset[branches[br]][iter]['Branch '])
 
       }
     }
   }
 }
-
+console.log(boys)
 
 
 
 for(br = 0 ; br<bran ; br++){
-    for(iter = 0 ; branches[br] in create_sorted_dataset &&  iter<create_sorted_dataset[branches[br]].length&& boys[br]>0 && create_sorted_dataset[branches[br]][iter]['Gender ']!='Allocated'  ;iter++ ){
+    for(iter = 0 ; branches[br] in create_sorted_dataset &&  iter<create_sorted_dataset[branches[br]].length && boys[br]>0   ;iter++ ){
       create_sorted_dataset[branches[br]][iter]['Gender '] = "Allocated";
       boys[br]--;
     }
@@ -1067,8 +1098,15 @@ for(let br = 0 ; br<bran ; br++){
       create_sorted_dataset[branches[br]][iter]['Gender ']='Un-allocated'
     }
   }
-  console.log(count);
+  // console.log(count);
 }
 console.log(count)
 // console.log(create_sorted_dataset)
-console.log(dir)
+// console.log(dir)
+// console.log(dir)
+// console.log()
+console.log("**********")
+console.log(boys)
+return create_sorted_dataset;
+}
+Main()
