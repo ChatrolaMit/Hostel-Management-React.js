@@ -995,22 +995,48 @@ for(let i = 0 ; i<bran ; i++){
 // sort_data(students['Sheet1'])
 
 
-
-let sc_pr = Number(7*bran/100);
-let st_pr = Number(15*bran/100) ;
-let sebc = Number(27*bran/100);
-let ews = Number(10*bran/100) ;
-others = bran-(sc_pr+sc_pr+sebc+ews)
-category = ['SC','ST','SEBC','EWS','Open']
-pr = {'SC': sc_pr , 'ST' :st_pr , 'SEBC': sebc , 'EWS': ews, 'Open':others };
+let sc_pr = Math.floor(7*rem/100);
+let st_pr = Math.floor(15*rem/100);
+let sebc = Math.floor(27*rem/100);
+let ews = Math.floor(10*rem/100) ;
+others = rem-(sc_pr+sc_pr+sebc+ews)
+category = ['SC','ST','OBC','EWS','Open']
+pr = [ sc_pr , st_pr ,  sebc ,  ews ]
 
 // sc allocation
 // allocation()
 console.log(create_sorted_dataset)
-
+console.log(pr , rem)
 
 console.log(seats)
 
+
+dir = {}
+
+
+for(let br = 0 ; br<bran ; br++){
+  dir[branches[br]]=[]
+  for(i = 0 ; i<4 ; i++){
+    dir[branches[br]].push(0)
+  }
+}
+
+console.log(dir)
+
+for(let i = 0 ; i<4 ; i++){
+  for(let br = 0 ; br<bran; br++){
+    
+    if(pr[i]>0){
+      dir[branches[br]][i]=dir[branches[br]][i]+1;
+      // console.log(dir[branches[br]])
+      boys[br]--;
+      pr[i]--;
+    }else{
+      break;
+    }
+  }
+}
+console.log(dir)
 for(let i=0 ; i<bran ; i++){
     console.log(branches[i],": ",boys[i])
 }
