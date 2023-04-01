@@ -863,7 +863,6 @@ function pwd_allocation(students){
 }
 
 create_sorted_dataset = {}
-track_br = new Set();
 
 function dataset(students){
   for(xx = 0 ; xx<students.length ; xx++ ){
@@ -1006,7 +1005,7 @@ category = ['SC','ST','SEBC','EWS','Open']
 pr = {'SC': sc_pr , 'ST' :st_pr , 'SEBC': sebc , 'EWS': ews, 'Open':others };
 
 // sc allocation
-allocation()
+// allocation()
 console.log(create_sorted_dataset)
 
 
