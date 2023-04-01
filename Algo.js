@@ -844,9 +844,10 @@ function allocated_from_branch(i){
 function pwd_allocation(students){
   for(i = 0 ; i<students.length ; i++){
     if(students[i]['pwd']==true && students[i]['allocationStatus']==false){
-      allocated_from_branch(i)
+      students[i][allocationStatus]=true;
+      seats--
     }
-  }
+  } 
   
 }
 
@@ -861,6 +862,11 @@ let bran = branches.length;
 let counter = 0;
 let seats = 77;
 let tag = 0;
+
+// PWD allocation
+pwd_allocation(students['Sheet1'])
+
+// identify seats branch wise
 while(seats>0){
     // console.log(tag ,counter,seats);
     if(tag==0){
@@ -902,8 +908,6 @@ for(let i = 0 ; i<bran ; i++){
 
 // sort by acpc
 sort_data(students['Sheet1'])
-// PWD allocation
-pwd_allocation(students['Sheet1'])
 
 
 
