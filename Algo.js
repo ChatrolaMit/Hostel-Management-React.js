@@ -888,13 +888,61 @@ function sort_new_dataset(){
 }
 sort_new_dataset()
 
-console.log(create_sorted_dataset)
+// console.log(create_sorted_dataset)
 
 function allocation(){
-  for(i = 0 ; i<n ; i++){
+  counter=0,tag=0;
+  while(pr['SC']>0){
+    if(tag==0){
+      for(let i = counter ; i<bran ; i++){
+        if(tag==0){
+          ln = create_sorted_dataset[branches[counter]].length
+          for(let notall = 0 ;  notall<ln ; notall++ )
+          {
+            if(create_sorted_dataset[branches[counter]][notall]['hostelStatus']=='Not Applied' && create_sorted_dataset[branches[counter]][notall]['category']=='SC')
+            {
+              create_sorted_dataset[branches[counter]][notall]['hostelStatus'] = 'Allocated';
+              pr['SC']--;
+              counter++;
+              rem--;
+              break;
+            }
+             
+          }
+          if(tag==0 && counter%bran == 0){
+            tag = (tag+1)%2
+            counter = 0
+          }
+        }
+        else{
+          ln = create_sorted_dataset[branches[counter]].length
+          for(let notall = 0 ; notall<ln ; notall++ )
+          {
+            console.log(create_sorted_dataset[branches[counter]] , counter , "***")
+            if(create_sorted_dataset[branches[counter]]!='undefined' && create_sorted_dataset[branches[counter]][notall]['hostelStatus']=='Not Applied' && create_sorted_dataset[branches[counter]][notall]['category']=='SC')
+            {
+              create_sorted_dataset[branches[counter]][notall]['hostelStatus'] = 'Allocated';
+              pr['SC']--;
+              counter++;
+              rem--;
+              break;
+            }
+            counter++;
+            
+          }
+          if(tag==1 && counter%bran == 0){
+            tag = (tag+1)%2
+            counter = 0
+          } 
+        }
+        
+        
 
+      }
+    }
   }
 }
+
 
 
 
@@ -954,10 +1002,12 @@ let st_pr = Number(15*bran/100) ;
 let sebc = Number(27*bran/100);
 let ews = Number(10*bran/100) ;
 others = bran-(sc_pr+sc_pr+sebc+ews)
-
-catagory = {'SC': sc_pr , 'ST' :st_pr , 'SEBC': sebc , 'EWS': ews, 'Open':others };
+category = ['SC','ST','SEBC','EWS','Open']
+pr = {'SC': sc_pr , 'ST' :st_pr , 'SEBC': sebc , 'EWS': ews, 'Open':others };
 
 // sc allocation
+allocation()
+console.log(create_sorted_dataset)
 
 
 console.log(seats)
